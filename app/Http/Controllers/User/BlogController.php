@@ -2,84 +2,98 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\Blog;
 use Illuminate\Http\Request;
+use App\Models\Blog;
+use App\Http\Requests\BlogRequest;
+use Illuminate\Support\Facades\Storage; 
 
 class BlogController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $blogs = Blog::all();
+
+        return view('index', ['blogs' => $blogs]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function show($id)
+    {
+        $blog = Blog::find($id);
+        if (is_null($blog)) {
+            \Session::flash('err_msg', 'データがありません。');
+            return redirect(route('index'));
+        }
+        return view('show', ['blog' => $blog]);
+    }
+
     public function create()
     {
-        //
+        return view('create_form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(BlogRequest $request)
     {
-        //
+        $newBlog = new Blog();
+        $newBlog->title = $request->input('title');
+        $newBlog->content = $request->input('content');
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extention;
+            $file->storeAs('public/images',$filename); 
+            $newBlog->image = $filename;
+        }
+        $newBlog->save();
+
+        \Session::flash('err_msg', 'ブログを登録しました');
+        return redirect()->route('index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Blog $blog)
+    public function edit($id)
     {
-        //
+        $blog = Blog::find($id);
+        if (is_null($blog)) {
+            \Session::flash('err_msg', 'データがありません。');
+            return redirect(route('index'));
+        }
+        return view('edit', ['blog' => $blog]);
+        //return view('edit',compact('blog'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Blog $blog)
+    public function update(Request $request,$id)
     {
-        //
+
+        $edit = Blog::find($id);
+        $edit->title = $request->input('title');
+        $edit->content = $request->input('content');
+
+        if ($request->hasfile('image')) {
+            $path ='public/images/'.$edit->image;
+            if(Storage::exists($path))
+            {
+                Storage::delete($path);
+            }
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extention;
+            $file->storeAs('public/images',$filename);
+            $edit->image = $filename;
+        }
+        $edit->update();
+
+
+        \Session::flash('err_msg', 'ブログを更新しました');
+
+        return redirect()->route('index');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Blog $blog)
+    public function delete($id)
     {
-        //
-    }
+        $blogDelete = Blog::find($id);
+        $blogDelete->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Blog $blog)
-    {
-        //
+        \Session::flash('err_msg', '削除しました。');
+        return redirect(route('index'));
     }
 }
