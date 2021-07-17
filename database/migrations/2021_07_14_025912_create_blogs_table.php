@@ -18,7 +18,7 @@ class CreateBlogsTable extends Migration
             $table->foreignId('user_id')->constrained()->onupdate('cascade')->onDelete('cascade');
             $table->string('title');
             $table->text('content');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

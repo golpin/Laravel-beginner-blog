@@ -1,41 +1,33 @@
 <mxfile>
     <diagram id="ycr3Hbp3P-tFWHsflbVk" name="ページ1">
-        <mxGraphModel dx="899" dy="459" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="372" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
-                <mxCell id="2" value="users" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="330" y="240" width="116" height="148" as="geometry"/>
+                <mxCell id="2" value="users" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="240" width="120" height="148" as="geometry"/>
                 </mxCell>
-                <mxCell id="5" value="id&#10;name&#10;email&#10;password&#10;email_verified_at&#10;remember_token&#10;created_at&#10;updated_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="2">
-                    <mxGeometry y="26" width="116" height="122" as="geometry"/>
+                <mxCell id="5" value="id(PK)&#10;name&#10;email&#10;password&#10;email_verified_at&#10;remember_token&#10;created_at&#10;updated_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="2" vertex="1">
+                    <mxGeometry y="26" width="120" height="122" as="geometry"/>
                 </mxCell>
-                <mxCell id="6" value="blogs" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
-                    <mxGeometry x="130" y="270" width="116" height="148" as="geometry"/>
+                <mxCell id="6" value="blogs" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
+                    <mxGeometry x="120" y="240" width="120" height="148" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="id(PK)&#10;user_id(FK)&#10;title&#10;content&#10;image&#10;created_at&#10;updated_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="6">
-                    <mxGeometry y="26" width="116" height="122" as="geometry"/>
+                <mxCell id="7" value="id&#10;user_id(FK)&#10;title&#10;content&#10;image&#10;created_at&#10;updated_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="6" vertex="1">
+                    <mxGeometry y="26" width="120" height="122" as="geometry"/>
                 </mxCell>
-                <mxCell id="12" value="admins" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+                <mxCell id="12" value="admins" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
                     <mxGeometry x="480" y="240" width="116" height="148" as="geometry"/>
                 </mxCell>
-                <mxCell id="13" value="id&#10;name&#10;email&#10;password&#10;email_verified_at&#10;remember_token&#10;created_at&#10;updated_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="12">
+                <mxCell id="13" value="id&#10;name&#10;email&#10;password&#10;email_verified_at&#10;remember_token&#10;created_at&#10;updated_at" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="12" vertex="1">
                     <mxGeometry y="26" width="116" height="122" as="geometry"/>
                 </mxCell>
-                <mxCell id="XUph2JYveev_2RJ4rBqT-14" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;exitX=1;exitY=0.383;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="7">
+                <mxCell id="XUph2JYveev_2RJ4rBqT-14" value="" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;" parent="1" edge="1">
                     <mxGeometry width="100" height="100" relative="1" as="geometry">
-                        <mxPoint x="286" y="320" as="sourcePoint"/>
-                        <mxPoint x="328" y="280" as="targetPoint"/>
+                        <mxPoint x="243" y="320" as="sourcePoint"/>
+                        <mxPoint x="320" y="320" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-            </root>
-        </mxGraphModel>
-    </diagram>
-    <diagram id="WjTEcW88gRqeXv1vIYOa" name="ページ2">
-        <mxGraphModel dx="1079" dy="551" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
-            <root>
-                <mxCell id="N4-xQCuGpK5Txl8NLFEd-0"/>
-                <mxCell id="N4-xQCuGpK5Txl8NLFEd-1" parent="N4-xQCuGpK5Txl8NLFEd-0"/>
             </root>
         </mxGraphModel>
     </diagram>
