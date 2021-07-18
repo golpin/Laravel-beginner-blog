@@ -4,21 +4,27 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\BlogRequest;
 use App\Models\Blog;
 use App\Models\User;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage; 
 
 class BlogController extends Controller
 {
     public function home()
     {
-        return view('user.home');
+
+        $blogs = Blog::all();
+        //dd($blogs);
+
+        return view('user.home',compact('blogs'));
     }
 
 
     public function show($id)
     {
+
     }
 
     public function create()
@@ -26,7 +32,7 @@ class BlogController extends Controller
         return view('user.create');
     }
 
-    public function store(Request $request )
+    public function store(BlogRequest $request )
     {
 
         $user = User::findOrFail(Auth::id());
@@ -92,10 +98,18 @@ class BlogController extends Controller
 
     public function delete($id)
     {
-        $blogDelete = Blog::find($id);
-        $blogDelete->delete();
+        $blog = Blog::findOrFail($id);
+
+        if ( $blog->image ) {
+            $path ='public/images/'.$blog->image;
+            if(Storage::exists($path))
+            {
+                Storage::delete($path);
+            }
+        $blog->delete();
 
         \Session::flash('err_msg', '削除しました。');
-        return redirect(route('index'));
+        return redirect(route('user.home'));
+        }
     }
 }
