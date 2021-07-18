@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::middleware('auth:users')->group(function(){
     Route::get('/create', [BlogController::class, 'create'])->name('create');
     Route::get('/home', [BlogController::class, 'home'])->name('home');
-
+    Route::post('/store',[BlogController::class, 'store'])->name('store');
 });
 
 require __DIR__.'/auth.php';

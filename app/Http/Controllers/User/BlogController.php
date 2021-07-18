@@ -5,8 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
-use App\Http\Requests\BlogRequest;
-use Illuminate\Support\Facades\Storage; 
+use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -25,22 +26,30 @@ class BlogController extends Controller
         return view('user.create');
     }
 
-    public function store(BlogRequest $request)
+    public function store(Request $request )
     {
-        $newBlog = new Blog();
-        $newBlog->title = $request->input('title');
-        $newBlog->content = $request->input('content');
-        if ($request->hasfile('image')) {
-            $file = $request->file('image');
-            $extention = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $extention;
-            $file->storeAs('public/images',$filename); 
-            $newBlog->image = $filename;
-        }
-        $newBlog->save();
 
-        \Session::flash('err_msg', 'ブログを登録しました');
-        return redirect()->route('index');
+        $user = User::findOrFail(Auth::id());
+        try{
+            $blog = new Blog();
+            $blog->title = $request->input('title');
+            $blog->content = $request->input('content');
+            $blog->user_id = $user->id;
+            if ($request->hasfile('image')) {
+                $file = $request->file('image');
+                $extention = $file->getClientOriginalExtension();
+                $filename = time() . '.' . $extention;
+                $file->storeAs('public/images',$filename); 
+                $blog->image = $filename;
+            }
+            $blog->save();
+        }catch(Throwable $e){
+            Log::error($e);
+            throw $e;
+        }
+
+        \Session::flash('err_msg', '記事を登録しました');
+        return redirect()->route('user.home');
     }
 
     public function edit($id)

@@ -9,8 +9,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-indigo-100 border-b border-gray-200">
-
-                    <div class="text-gray-800 body-font">
+                    @if (session('err_msg'))
+                    <p class="bg-green-600 rounded-lg text-lg w-1/3 text-center">
+                        {{ session('err_msg') }}
+                    </p>
+                    @endif
+                    <div class="text-gray-200 body-font">
                         <div class="flex flex-wrap mx-2 xs:mx-4">
                             <div class="p-2 sm:w-1/3">
                                 <div class="bg-gray-100 border p-6 rounded-lg">
