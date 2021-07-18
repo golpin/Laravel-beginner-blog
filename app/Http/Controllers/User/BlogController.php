@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Http\Requests\BlogRequest;
@@ -9,27 +10,19 @@ use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function home()
     {
-        $blogs = Blog::all();
-
-        return view('index', ['blogs' => $blogs]);
+        return view('user.home');
     }
 
 
     public function show($id)
     {
-        $blog = Blog::find($id);
-        if (is_null($blog)) {
-            \Session::flash('err_msg', 'データがありません。');
-            return redirect(route('index'));
-        }
-        return view('show', ['blog' => $blog]);
     }
 
     public function create()
     {
-        return view('create_form');
+        return view('user.create');
     }
 
     public function store(BlogRequest $request)

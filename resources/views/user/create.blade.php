@@ -6,9 +6,9 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto px-4 xs:px-12">
+        <div class="max-w-7xl mx-auto px-16 ">
             <div class="bg-white overflow-hidden shadow-sm rounded-lg">
-                <div class="px-2 py-4 bg-yellow-50 border-b border-gray-200 xs:px-8">
+                <div class="px-2 py-4 bg-indigo-100 border-b border-gray-200">
                     <h2 class=" text-center  text-xl">記事投稿フォーム</h2>
                     <form action="{{--{{ route('store') }}--}}" method="POST" onsubmit="return checkSubmit()"
                         enctype="multipart/form-data">
