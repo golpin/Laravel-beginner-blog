@@ -31,9 +31,8 @@
                             <div class="relative">
                                 <label for="image" class="leading-7 text-lg text-gray-800">画像</label>
                                 <input type="file" name="image" id="image" name="image"
-                                    accept="image/jpg,image/jpeg,image/png"
                                     class="w-full bg-gray-50 bg-opacity-100 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-                                <p>※画像は必須です。拡張子はjpg・jpeg・pngのいずれか限定です。</p>
+                                <p>拡張子はjpg・jpeg・png限定。ファイルサイズの上限は10MB</p>
                             </div>
                         </div>
                         <div class="p-2 w-full flex justify-around mt-4">
@@ -51,6 +50,11 @@
                         </div>
                     </form>
                 </div>
+                @if ($errors->has('image'))
+                <div class="text-danger">
+                    {{ $errors->first('image') }}
+                </div>
+                @endif
             </div>
         </div>
     </div>
