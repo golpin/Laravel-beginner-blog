@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,10 @@ Route::get('/', function () {
     return view('user.welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('user.dashboard');
-})->middleware(['auth:users'])->name('dashboard');
+Route::middleware('auth:users')->group(function(){
+    Route::get('/create', [BlogController::class, 'create'])->name('create');
+    Route::get('/home', [BlogController::class, 'home'])->name('home');
+    Route::post('/store',[BlogController::class, 'store'])->name('store');
+});
 
 require __DIR__.'/auth.php';

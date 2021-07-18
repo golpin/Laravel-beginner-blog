@@ -6,11 +6,11 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto px-4 xs:px-12">
+        <div class="max-w-7xl mx-auto px-16 ">
             <div class="bg-white overflow-hidden shadow-sm rounded-lg">
-                <div class="px-2 py-4 bg-yellow-50 border-b border-gray-200 xs:px-8">
+                <div class="px-2 py-4 bg-indigo-100 border-b border-gray-200">
                     <h2 class=" text-center  text-xl">記事投稿フォーム</h2>
-                    <form action="{{--{{ route('store') }}--}}" method="POST" onsubmit="return checkSubmit()"
+                    <form action="{{ route('user.store') }}" method="POST" onsubmit="return checkSubmit()"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="p-2 w-3/4 mx-auto">
@@ -39,14 +39,14 @@
                         <div class="p-2 w-full flex justify-around mt-4">
                             <button type="button" onclick="location.href='{{--{{ route('owner.products.index') }}--}}'"
                                 class="flex place-items-center bg-white border-4 py-2 px-4 focus:outline-none hover:bg-gray-400 rounded text-lg"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>戻る</button>
-                            <button type="submit"
-                                class="flex place-items-center text-white bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                            <button type="submit" class="flex place-items-center text-white bg-indigo-500 border-0 py-2 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
                                         d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z"
                                         clip-rule="evenodd">
                                     </path>
-                                </svg>投稿する
+                                </svg>
+                                投稿する
                             </button>
                         </div>
                     </form>
