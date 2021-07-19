@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('記事投稿フォーム') }}
+            {{ __('記事更新フォーム') }}
         </h2>
     </x-slot>
 
@@ -9,22 +9,23 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-16 ">
             <div class="bg-white overflow-hidden shadow-sm rounded-lg">
                 <div class="px-2 py-4 bg-indigo-100 border-b border-gray-200">
-                    <h2 class="w-3/4 sm:w-1/3  mx-auto  text-center  text-xl border-b-2 border-indigo-500">記事投稿フォーム</h2>
-                    <form action="{{ route('user.store') }}" method="POST" onsubmit="return checkSubmit()"
+                    <h2 class="w-3/4 sm:w-1/3  mx-auto  text-center  text-xl border-b-2 border-indigo-500">記事更新フォーム</h2>
+                    <form action="{{ route('user.update',$blog->id) }}" method="POST" onsubmit="return checkSubmit()"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="p-2 w-3/4 mx-auto">
                             <div class="relative">
                                 <label for="title" class="leading-7 text-lg text-gray-800">タイトル</label>
-                                <input type="text" id="title" name="title" value="{{ old('title') }}" required
+                                <input type="text" id="title" name="title" value="{{ $blog->title }}" required
                                     class="w-full bg-gray-50 bg-opacity-100 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                             </div>
                         </div>
                         <div class="p-2 w-3/4 mx-auto">
                             <div class="relative">
                                 <label for="content" class="leading-7 text-lg text-gray-800">本文</label>
-                                <textarea rows="6" id="content" name="content" value="{{ old('content') }}" required
-                                    class="w-full bg-gray-50 bg-opacity-100 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"></textarea>
+                                <textarea rows="6" id="content" name="content" value="{{ old($blog->content) }}"
+                                    required
+                                    class="w-full bg-gray-50 bg-opacity-100 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">{{ $blog->content }}</textarea>
                             </div>
                         </div>
                         <div class="p-2 w-3/4 mx-auto">
@@ -37,7 +38,7 @@
                         </div>
                         <div class="p-2 w-full flex justify-around mt-4">
                             <button type="button" onclick="location.href='{{--{{ route('owner.products.index') }}--}}'"
-                                class="flex place-items-center bg-white border-4 py-2 px-2 focus:outline-none hover:bg-gray-400 rounded-lg text-lg"><svg
+                                class="flex place-items-center bg-white border-4 py-2 px-2 focus:outline-none hover:bg-gray-400 rounded-lg text-md"><svg
                                     class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -53,7 +54,7 @@
                                         clip-rule="evenodd">
                                     </path>
                                 </svg>
-                                投稿する
+                                更新する
                             </button>
                         </div>
                     </form>
@@ -63,12 +64,13 @@
                     </div>
                     @endif
                 </div>
+
             </div>
         </div>
     </div>
     <script>
         function checkSubmit(){
-                        if(window.confirm('送信してよろしいですか？')){
+                        if(window.confirm('更新してよろしいですか？')){
                             return true;
                         } else {
                             return false;
