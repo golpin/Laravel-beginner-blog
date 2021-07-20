@@ -7,11 +7,10 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-16 ">
-            <div class="bg-white overflow-hidden shadow-sm rounded-lg">
-                <div class="px-2 py-4 bg-indigo-100 border-b border-gray-200">
+            <div class=" overflow-hidden shadow-xl rounded-xl">
+                <div class="px-2 py-4 bg-blue-50 border-b border-gray-200">
                     <h2 class="w-3/4 sm:w-1/3  mx-auto  text-center  text-xl border-b-2 border-indigo-500">記事投稿フォーム</h2>
-                    <form action="{{ route('user.store') }}" method="POST" onsubmit="return checkSubmit()"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('user.store') }}" method="POST" onsubmit="return checkSubmit()" enctype="multipart/form-data">
                         @csrf
                         <div class="p-2 w-3/4 mx-auto">
                             <div class="relative">
