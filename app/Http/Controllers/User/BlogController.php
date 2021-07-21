@@ -23,10 +23,14 @@ class BlogController extends Controller
         return view('user.home',compact('blogs'));//view側に変数blogsを渡す
     }
 
-
-    public function show($id)
+    public function guest()
     {
-        //
+
+        $blogs = Blog::paginate(12);
+        //blog9件で1ページとする
+        //dd($blogs);
+
+        return view('guest.home',compact('blogs'));//view側に変数blogsを渡す
     }
 
     public function create()

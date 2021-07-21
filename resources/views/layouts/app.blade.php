@@ -15,7 +15,6 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -23,6 +22,8 @@
                 @include('layouts.admin-navigation')
             @elseif(auth('users')->user())
                 @include('layouts.user-navigation')
+            @else
+            @include('layouts.guest-navigation')
             @endif
             {{--adminかuserかで読み込むnavigationの表示を変える--}}
 
