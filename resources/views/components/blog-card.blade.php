@@ -1,6 +1,11 @@
 <div class="bg-gray-100 border p-6 rounded-lg mx-auto" x-data="{ showModal : false }">
-    <img class="max-h-60  rounded object-center mb-2 mx-auto"
-        src="{{ asset('storage/images/'.$blog->image) }}" alt="content" @click="showModal = !showModal">
+    @if (!is_null($blog->image))
+    <img class="max-h-60  rounded object-center mx-auto"
+    src="{{ asset('storage/images/'.$blog->image) }}" alt="content" @click="showModal = !showModal">
+    @else
+    <img class="max-h-60  rounded object-center  mx-auto"
+    src="{{ asset('storage/images/'.'no_image_logo.png') }}" alt="content" @click="showModal = !showModal">
+    @endif
     <h3 class="tracking-widest text-indigo-500 text-lg font-medium title-font">
         {{ $blog->title}}
     </h3>
@@ -18,7 +23,13 @@
         <!-- Modal -->
         <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-1/2 mx-10" @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
             <!--image -->
-            <img class="  rounded object-cover object-center mb-3 mx-auto" src="{{ asset('storage/images/'.$blog->image) }}" height: auto; width: auto; background-size: cover>
+            @if (!is_null($blog->image))
+            <img class="max-h-60  rounded object-center mx-auto"
+            src="{{ asset('storage/images/'.$blog->image) }}" height: auto; width: auto; background-size: cover alt="content" >
+            @else
+            <img class="max-h-60  rounded object-center  mx-auto"
+            src="{{ asset('storage/images/'.'no_image_logo.png') }}" height: auto; width: auto; background-size: cover alt="content">
+            @endif
             <!-- Title -->
             <h2 class="tracking-widest text-gray-500 text-2xl font-medium title-font">{{ $blog->title}}</h2>
             <!-- content 🍺 -->
@@ -64,8 +75,15 @@
             </div>
         </div>
     </div>
-
 </div>
-
+<script>
+    function checkDelete(){
+    if(window.confirm('削除してよろしいですか？')){
+        return true;
+    } else {
+        return false;
+    }
+    }
+</script>
 
 

@@ -14,9 +14,7 @@ use App\Http\Controllers\User\BlogController;
 |
 */
 
-Route::get('/', function () {
-    return view('user.welcome');
-});
+Route::get('/', [BlogController::class, 'guest'])->name('guest');
 
 Route::middleware('auth:users')->group(function(){
     Route::get('/home', [BlogController::class, 'home'])->name('home');
