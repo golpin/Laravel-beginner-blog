@@ -1,4 +1,11 @@
 <x-guest-layout>
+
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            管理者ログイン
+        </h2>
+    </x-slot>
+
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">

@@ -40,13 +40,12 @@
 
             <!-- Buttons -->
             <div class="flex justify-between bt-2 w-1/2 mx-auto">
-                @if($blog->user_id ==Auth::id())
-                <form action="{{ route('user.edit',$blog->id) }}" method="GET">
+
                     <div class="flex flex-row-reverse">
                         @csrf
-                        <button type="submit"
-                            class="focus:outline-none text-white text-sm py-2 px-2 mr-1 rounded-lg bg-yellow-400 hover:bg-yellow-500 hover:shadow-lg flex items-center">
-                            更新
+                        <button type="button"　disabled
+                            class="focus:outline-none text-white text-sm py-2 px-2 mr-1 rounded-lg bg-yellow-400 hover:bg-gray-600 hover:shadow-xl flex items-center">
+                            更新不可
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z">
@@ -54,8 +53,7 @@
                             </svg>
                         </button>
                     </div>
-                </form>
-        
+
                 <form action="{{ route('user.delete',$blog->id) }}" method="POST" onsubmit="return checkDelete()">
                     <div class="flex flex-row-reverse">
                         @csrf
@@ -71,8 +69,6 @@
                         </button>
                     </div>
                 </form>
-                @else
-                @endif
             </div>
         </div>
     </div>

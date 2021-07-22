@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use App\Models\Blog;
 
 class AdminController extends Controller
 {
@@ -12,9 +14,14 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function home()
     {
-        //
+        $blogs = Blog::paginate(12);
+
+        //blog9件で1ページとする
+        //dd($blogs);
+
+        return view('admin.home',compact('blogs'));//view側に変数blogsを渡す
     }
 
     /**
