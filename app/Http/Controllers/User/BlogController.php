@@ -9,6 +9,7 @@ use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Facades\DB;
 
 
 class BlogController extends Controller
@@ -17,6 +18,7 @@ class BlogController extends Controller
     {
 
         $blogs = Blog::paginate(12);
+
         //blog9件で1ページとする
         //dd($blogs);
 
