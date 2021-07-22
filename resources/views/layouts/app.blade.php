@@ -22,8 +22,6 @@
                 @include('layouts.admin-navigation')
             @elseif(auth('users')->user())
                 @include('layouts.user-navigation')
-            @else
-            @include('layouts.guest-navigation')
             @endif
             {{--adminかuserかで読み込むnavigationの表示を変える--}}
 
