@@ -39,10 +39,10 @@
 
                     <x-slot name="content">
                         <!-- Authentication -->
-                        <div class="px-6 py-4 flex flex-col ">
-                            <a href="{{ route('user.login') }}" class="mb-2 text-md text-gray-500 hover:text-green-400 hover:border-gray-300 transition duration-150 ease-in-out" >Log in</a>
+                        <div class="w-28 flex flex-col ">
+                            <a href="{{ route('user.login') }}" class="mb-2 text-md text-gray-500 hover:text-green-400 hover:bg-gray-200 transition duration-150 ease-in-out" >Log in</a>
                             @if (Route::has('user.register'))
-                            <a href="{{ route('user.register') }}" class=" text-md text-gray-500 hover:text-green-400 hover:border-gray-300 transition duration-150 ease-in-out">Register</a>
+                            <a href="{{ route('user.register') }}" class="  text-md text-gray-500 hover:text-green-400 hover:bg-gray-200 transition duration-150 ease-in-out">Register</a>
                             @endif
                         </div>
                     </x-slot>

@@ -1,34 +1,35 @@
-<div class="bg-gray-100 border p-6 rounded-lg mx-auto" x-data="{ showModal : false }">
+<div class="w-full bg-gray-50 border p-6 rounded-lg mx-auto" x-data="{ showModal : false }">
     @if (!is_null($blog->image))
-    <img class="max-h-60  rounded object-center mx-auto"
+    <img class="h-60 w-auto  rounded object-center mx-auto"
     src="{{ asset('storage/images/'.$blog->image) }}" alt="content" @click="showModal = !showModal">
     @else
-    <img class="max-h-60  rounded object-center  mx-auto"
+    <img class="h-60 w-auto rounded object-center  mx-auto"
     src="{{ asset('storage/images/'.'no_image_logo.png') }}" alt="content" @click="showModal = !showModal">
     @endif
-    <h3 class="tracking-widest text-indigo-500 text-lg font-medium title-font">
+    <h3 class="text-lg text-indigo-500 font-medium overflow-ellipsis overflow-hidden">
         {{ $blog->title}}
     </h3>
-    <p class="text-md text-gray-900 font-medium title-font mb-2 overflow-clip break-all">
-        {{ $blog->content}}
-    </p>
 
-    <p class="text-gray-600 py-2 text-sm">
-        投稿日:{{ $blog->created_at->format('Y-m-d')}}</p>
+    <p class="text-gray-600  text-md">
+            投稿者:{{ $blog->user->name}}
+    </p>
+    <p class="text-gray-600  text-sm">
+        投稿日:{{ $blog->created_at->format('Y-m-d')}}
+    </p>
 
     
 
     <!-- Modal Background -->
     <div x-show="showModal" class="fixed text-gray-600 flex items-center justify-center overflow-auto z-50 bg-black bg-opacity-40 left-0 right-0 top-0 bottom-0" x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click="showModal = !showModal">
         <!-- Modal -->
-        <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-1/2 mx-10" @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
+        <div x-show="showModal" class="bg-white rounded-xl shadow-2xl p-6 sm:w-2/3 mx-10" @click.away="showModal = false" x-transition:enter="transition ease duration-100 transform" x-transition:enter-start="opacity-0 scale-90 translate-y-1" x-transition:enter-end="opacity-100 scale-100 translate-y-0" x-transition:leave="transition ease duration-100 transform" x-transition:leave-start="opacity-100 scale-100 translate-y-0" x-transition:leave-end="opacity-0 scale-90 translate-y-1">
             <!--image -->
             @if (!is_null($blog->image))
-            <img class="max-h-60  rounded object-center mx-auto"
-            src="{{ asset('storage/images/'.$blog->image) }}" height: auto; width: auto; background-size: cover alt="content" >
+            <img class="max-h-96 rounded object-center mx-auto"
+            src="{{ asset('storage/images/'.$blog->image) }}"  alt="content" >
             @else
-            <img class="max-h-60  rounded object-center  mx-auto"
-            src="{{ asset('storage/images/'.'no_image_logo.png') }}" height: auto; width: auto; background-size: cover alt="content">
+            <img class="max-h-96  rounded object-center  mx-auto"
+            src="{{ asset('storage/images/'.'no_image_logo.png') }}"  alt="content">
             @endif
             <!-- Title -->
             <h2 class="tracking-widest text-gray-500 text-2xl font-medium title-font">{{ $blog->title}}</h2>
