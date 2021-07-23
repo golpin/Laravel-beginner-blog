@@ -15,12 +15,15 @@
                     <x-nav-link :href="route('admin.home')" :active="request()->routeIs('admin.home')">
                         {{ __('管理者ホーム') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.list')" :active="request()->routeIs('admin.list')">
+                        {{ __('ユーザー管理') }}
+                    </x-nav-link>
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                <x-dropdown align="right" width="48">
+                <x-dropdown align="right" width="40">
                     <x-slot name="trigger">
                         <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
                             <div>{{ Auth::user()->name }}</div>
@@ -62,13 +65,13 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('admin.home')" :active="request()->routeIs('admin.home')">
+                {{ __('管理者ホーム') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('admin.list')" :active="request()->routeIs('admin.list')">
+                {{ __('ユーザー管理') }}
             </x-responsive-nav-link>
         </div>
 
