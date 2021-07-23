@@ -39,12 +39,12 @@
             </p>
 
             <!-- Buttons -->
-            <div class="flex justify-between bt-2 w-1/2 mx-auto">
+            <div class="flex justify-between bt-2 w-2/3 mx-auto">
 
-                    <div class="flex flex-row-reverse">
+                    <div class=" flex flex-row-reverse">
                         @csrf
                         <button type="button"　disabled
-                            class="focus:outline-none text-white text-sm py-2 px-2 mr-1 rounded-lg bg-yellow-400 hover:bg-gray-600 hover:shadow-xl flex items-center">
+                            class="focus:outline-none text-white text-sm py-2 px-2 mr-2 rounded-lg bg-yellow-400 hover:bg-gray-600 hover:shadow-xl flex items-center">
                             更新不可
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -55,7 +55,7 @@
                     </div>
 
                 <form action="{{ route('user.delete',$blog->id) }}" method="POST" onsubmit="return checkDelete()">
-                    <div class="flex flex-row-reverse">
+                    <div class=" flex flex-row-reverse">
                         @csrf
                         <button type="submit"
                             class="focus:outline-none text-white text-sm py-2 px-2 rounded-lg bg-red-500 hover:bg-red-600 hover:shadow-lg flex items-center">

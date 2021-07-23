@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
-
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +26,15 @@ use App\Http\Controllers\Admin\AdminController;
 //});
 
 
-Route::get('/home', [AdminController::class, 'home'])
+Route::get('/', [AdminController::class, 'home'])
                 ->middleware(['auth:admin'])
                 ->name('home');
+Route::get('/list', [AdminController::class, 'list'])
+                ->middleware(['auth:admin'])
+                ->name('list');
+Route::post('/delete/{id}',[AdminController::class, 'delete'])
+                ->middleware(['auth:admin'])
+                ->name('delete');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
