@@ -1,7 +1,7 @@
 
 # Name
  
-Laravel-beginner-blogはLravelBreezeを用いてマルチログインに対応した初歩的なCRUD機能を有するブログアプリです。
+Laravel-beginner-blogはLravelBreezeを用いてマルチログインに対応した初歩的なCRUD機能を有するブログアプリです。<br>
 ゲスト・ユーザー・管理者ごとに機能を分けています。　
  
 # DEMO
