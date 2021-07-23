@@ -1,11 +1,10 @@
 # Name
  
-Laravel-beginner-blogはLravelBreezeを用いてマルチログインに対応した初歩的なCRUD機能を有するブログアプリです。<br>
+Laravel-beginner-blogはLravelBreezeを用いてマルチログインに対応した初歩的なCRUD機能を有するブログアプリです。  
 ゲスト・ユーザー・管理者ごとに機能を分けています。　
  
 # DEMO
  
-"hoge"の魅力が直感的に伝えわるデモ動画や図解を載せる
  
 # Features
  
@@ -33,27 +32,13 @@ Laravel-beginner-blogはLravelBreezeを用いてマルチログインに対応�
 5.php artisan migrate (.envが必要です)
 6.php artisan storage:link (シンボリックリンクをはります)  
 7.php artisan serve
- 
-```bash
-pip install huga_package
-```
+
  
 # Usage
  
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
-```bash
-git clone https://github.com/hoge/~
-cd examples
-python demo.py
-```
- 
-# Note
- 
-注意点などがあれば書く
+
 
 # License
-ライセンスを明示する
- 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
+
+Laravel-beginner-blog is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
 
