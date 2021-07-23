@@ -24,15 +24,15 @@ Laravel-beginner-blogはLravelBreezeを用いてマルチログインに対応�
  ->任意のユーザーを削除出来る  
  ->削除されたユーザーの記事は全て削除される  
  
-# Envirnoment
- 
-PHP 8.0.7  
-Laravel 8.40  
-laravel/breeze 1.3  
- 
 # Installation
  
-Requirementで列挙したライブラリなどのインストール方法を説明する
+1.cd Laravel-beginner-blog  
+2.composer install  
+3.npm install  
+4.npm run dev  
+5.php artisan migrate (.envが必要です)
+6.php artisan storage:link (シンボリックリンクをはります)  
+7.php artisan serve
  
 ```bash
 pip install huga_package
